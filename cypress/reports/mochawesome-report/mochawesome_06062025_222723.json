@@ -1,0 +1,115 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-06T15:26:07.634Z",
+    "end": "2025-06-06T15:27:23.637Z",
+    "duration": 76003,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8c870c55-1c6c-43e5-b8c4-0749ad08da55",
+      "title": "",
+      "fullFile": "cypress/e2e/amazonSearch.cy.js",
+      "file": "cypress/e2e/amazonSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "90566a77-4e3f-4b5e-ad53-8ffa0b92bb88",
+          "title": "E2E Automate Cari Product di Amazon",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cari Kursi Website Amazon",
+              "fullTitle": "E2E Automate Cari Product di Amazon Cari Kursi Website Amazon",
+              "timedOut": null,
+              "duration": 72357,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\ncy.wait(10000);\ncy.scrollTo(\"top\");\n_amazonSearchPage.default.typeKeyword(`${input.typeKeyword}`);\ncy.wait(1000);\n_amazonSortProductPage.default.selectPriceDesc();\ncy.wait(3000);\n_amazonProductPage.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_amazonProductPage.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\n_amazonProductPage.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_amazonProductPage.default.clickBarang();\n_amazonHomePage.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_amazonHomePage.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `//form//input[@id=\"twotabsearchtextbox\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `//form//input[@id=\"twotabsearchtextbox\"]`, but never found it.\n    at get searchInputXPath (webpack://fullstackcypress/./cypress/pages/amazon/amazonSearchPage.js:10:14)\n    at AmazonSearchPage.typeKeyword (webpack://fullstackcypress/./cypress/pages/amazon/amazonSearchPage.js:33:9)\n    at Context.eval (webpack://fullstackcypress/./cypress/e2e/amazonSearch.cy.js:20:19)",
+                "diff": null
+              },
+              "uuid": "aea18637-dd32-4bcf-82c3-a8f6b8bfb6a1",
+              "parentUUID": "90566a77-4e3f-4b5e-ad53-8ffa0b92bb88",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "aea18637-dd32-4bcf-82c3-a8f6b8bfb6a1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 72357,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss",
+        "charts": true,
+        "reportPageTitle": "Laporan Pengujian Otomatisasi",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

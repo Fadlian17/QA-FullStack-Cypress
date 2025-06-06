@@ -36,8 +36,8 @@ const envVariables = {
   agoda: {
     url: "https://www.agoda.com/",
     cityFrom: "Jakarta",
-    departureAirport: "Soekarno-Hatta International Airport",
-    departureFrom: "CGK",
+    departureAirport: "Halim Perdanakusuma International Airport",
+    departureFrom: "HLP",
     cityArrival: "Singapore",
     arrivalAirport: "Singapore Changi Airport",
     arrivalTo: "SIN",
