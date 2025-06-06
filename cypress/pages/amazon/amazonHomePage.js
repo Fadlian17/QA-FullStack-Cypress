@@ -1,12 +1,13 @@
-class AmazonHomePage {
-  visit() {
-    cy.visit(Cypress.env('amazonBaseUrl'));
-  }
+class amazonHomePage {
 
-  searchForItem(item) {
-    cy.get('#twotabsearchtextbox').type(item);
-    cy.get('#nav-search-submit-button').click();
-  }
+    checkNamaBarang(){
+        return cy.xpath(`//span[@id="productTitle"]`).invoke('text');       
+    }
+
+    checkHrgBarang(){
+        return cy.xpath(`//div[@id="apex_desktop"]//span[@class="a-price-whole"]`).invoke('text')  
+    }
+
 }
 
-export default new AmazonHomePage();
+export default new amazonHomePage();

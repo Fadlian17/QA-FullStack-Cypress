@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-06T14:02:34.649Z",
+    "end": "2025-06-06T14:03:07.949Z",
+    "duration": 33300,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cabbfe37-0a24-45d6-bc63-a0d228d20bdc",
+      "title": "",
+      "fullFile": "cypress/e2e/youtubeSearch.cy.js",
+      "file": "cypress/e2e/youtubeSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bbf13979-1e5a-4d0e-885b-45f54b6055d3",
+          "title": "E2E Automate Cari Trending Video On Youtube",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Search Video Trending on Youtube",
+              "fullTitle": "E2E Automate Cari Trending Video On Youtube Search Video Trending on Youtube",
+              "timedOut": null,
+              "duration": 29999,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\n_youtubeHomePage.default.getLangYoutube().then(langAttr => {\n  cy.log(`Language Default : ${langAttr}`);\n  lang = langAttr === \"id-ID\" ? \"id\" : \"en\";\n});\ncy.then(() => {\n  _youtubeHomePage.default.goToTrendingMenu(input[lang].explore);\n  _youtubeHomePage.default.goToMoviesTab(input[lang].movie);\n  // Get Judul Film\n  _youtubeTrendingPage.default.getJudulFilm().then(judul => {\n    judulFilm = judul;\n  });\n  // Get Channel\n  _youtubeTrendingPage.default.getChannelYoutube().then(src => {\n    channel = src;\n  });\n  cy.then(() => {\n    cy.log(`Judul Film : ${judulFilm}`);\n    cy.log(`Channel Name : ${channel}`);\n    _youtubeTrendingPage.default.clickMovies();\n    cy.wait(10000);\n    _youtubeVideoPage.default.getMovieTitle(judulFilm);\n    _youtubeVideoPage.default.getMovieChannel(channel);\n    _youtubeVideoPage.default.clickShareAndCopy(input[lang].share);\n    _youtubeVideoPage.default.getLinkUrl().then(link => {\n      cy.log(`Link Url : ${link}`);\n    });\n  });\n});",
+              "err": {},
+              "uuid": "d07aea97-1f06-4ca7-9b7a-106a21205a48",
+              "parentUUID": "bbf13979-1e5a-4d0e-885b-45f54b6055d3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d07aea97-1f06-4ca7-9b7a-106a21205a48"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 29999,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss",
+        "charts": true,
+        "reportPageTitle": "Laporan Pengujian Otomatisasi",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,17 +1,28 @@
 {
   "name": "fullstackcypress",
   "version": "1.0.0",
+  "description": "Proyek otomatisasi pengujian Cypress.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --reporter mochawesome --reporter-options 'reportDir=cypress/reports/mochawesome-report,overwrite=true,html=true,json=true,charts=true,reportPageTitle=Laporan Pengujian Otomatisasi,embeddedScreenshots=true,inlineAssets=true,saveAllAttempts=false'",
+    "report:merge": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/mochawesome-report/output.json",
+    "report:generate": "marge cypress/reports/mochawesome-report/output.json --reportDir cypress/reports/mochawesome-report --inline true --overwrite true",
+    "report:clean": "rm -rf cypress/reports/mochawesome-report/* || del /q cypress\\reports\\mochawesome-report\\*",
+    "video:clean": "rm -rf cypress/videos/* || del /q cypress\\videos\\*",
+    "test": "npm run report:clean && npm run video:clean && npm run cypress:run && npm run report:merge && npm run report:generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
     "cypress": "^14.4.0",
-    "mochawesome": "^7.1.3"
+    "cypress-xpath": "^2.0.1",
+    "luxon": "^3.6.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
   },
   "dependencies": {
     "moment": "^2.30.1"

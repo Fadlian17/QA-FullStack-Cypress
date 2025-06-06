@@ -19,3 +19,14 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 // Ini adalah tempat di mana kamu juga bisa menambahkan custom commands
 // seperti contoh di bawah ini:
 // Cypress.Commands.add('login', (email, password) => { ... })
+
+
+import './commands'
+
+require("cypress-xpath");
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false
+})

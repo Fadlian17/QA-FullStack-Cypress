@@ -1,17 +1,25 @@
-class AgodaSearchResultsPage {
-  filterByAirline(airline) {
-    cy.get('[data-test-id="airline-filter"]').contains(airline).click();
-  }
+class cekData {
+    cekNameContact(firstName, lastName) {
+        cy.contains(`${firstName} ${lastName}`).should('be.visible');
+    }
 
-  selectEarliestFlight() {
-    // This will depend on the Agoda UI for sorting and selecting
-    // Assuming there's a sort by 'earliest' or we can pick the first one after filtering
-    cy.get('[data-test-id="flight-card"]').first().click(); // Placeholder, actual selector might be different
-  }
+    cekEmailContact(email){
+        cy.contains(`${email}`).should('be.visible');
+    }
 
-  continueToPassengerDetails() {
-    cy.get('[data-test-id="continue-button"]').click(); // Placeholder
-  }
+    cekPhoneContact(phone){
+        cy.contains(`${phone}`).should('be.visible');
+    }
+
+    cekPassengerName(firstName, middleName, lastName) {
+        cy.contains(`${firstName} ${middleName} ${lastName}`).should('be.visible');
+    }
+
+    cekTotalPrice(){
+
+    }
+
+
 }
 
-export default new AgodaSearchResultsPage();
+export default new cekData();
